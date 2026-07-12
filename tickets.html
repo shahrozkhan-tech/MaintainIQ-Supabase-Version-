@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Tickets · MaintainIQ</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+<div class="sidebar-scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><i data-lucide="scan-line"></i></div>
+      <div class="brand-name">Maintain<span>IQ</span></div>
+    </div>
+    <nav class="nav-list">
+      <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a class="nav-item" href="assets.html"><i data-lucide="boxes"></i> Assets</a>
+      <a class="nav-item" href="qr.html"><i data-lucide="qr-code"></i> QR Codes</a>
+      <a class="nav-item active" href="tickets.html"><i data-lucide="ticket"></i> Tickets</a>
+      <a class="nav-item" href="history.html"><i data-lucide="history"></i> History</a>
+      <a class="nav-item" href="profile.html"><i data-lucide="user-circle"></i> Profile</a>
+      <a class="nav-item" href="settings.html"><i data-lucide="settings"></i> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="flex items-center gap-12">
+        <div class="avatar" data-user-initials>?</div>
+        <div>
+          <div style="font-size:13px;font-weight:700" data-user-name>Loading...</div>
+          <div style="font-size:11.5px;color:var(--text-muted)" data-user-email></div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm w-full" onclick="handleLogout()"><i data-lucide="log-out" style="width:15px;height:15px"></i> Logout</button>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="flex items-center gap-12">
+        <button class="btn-icon hamburger"><i data-lucide="menu"></i></button>
+        <h1>Tickets</h1>
+      </div>
+      <div class="flex items-center gap-12">
+        <button class="theme-toggle" data-theme-toggle></button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="toolbar">
+        <div class="input-icon-wrap">
+          <i data-lucide="search"></i>
+          <input class="input" id="ticket-search" placeholder="Search by asset code or reporter...">
+        </div>
+        <select class="input filter-select" id="filter-ticket-status">
+          <option value="">All Statuses</option>
+          <option value="reported">Reported</option>
+          <option value="assigned">Assigned</option>
+          <option value="resolved">Resolved</option>
+        </select>
+        <select class="input filter-select" id="filter-ticket-urgency">
+          <option value="">All Urgency</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="glass-card" style="overflow-x:auto">
+        <table class="data-table" id="tickets-table">
+          <thead>
+            <tr><th>Asset</th><th>Reporter</th><th>Urgency</th><th>Status</th><th>Reported</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="tickets-tbody">
+            <tr><td colspan="6"><div class="loading-row"><span class="spinner"></span> Loading tickets...</div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i>Home</a>
+  <a class="nav-item" href="assets.html"><i data-lucide="boxes"></i>Assets</a>
+  <a class="nav-item" href="qr.html"><i data-lucide="qr-code"></i>QR</a>
+  <a class="nav-item active" href="tickets.html"><i data-lucide="ticket"></i>Tickets</a>
+  <a class="nav-item" href="profile.html"><i data-lucide="user-circle"></i>Profile</a>
+</nav>
+
+<!-- Ticket Detail Modal -->
+<div class="modal-overlay" id="ticket-modal">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <h3 id="ticket-modal-title">Ticket</h3>
+      <button class="btn-icon" onclick="closeModal('ticket-modal')"><i data-lucide="x"></i></button>
+    </div>
+    <div id="ticket-modal-body"></div>
+  </div>
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/tickets.js"></script>
+<script>
+  (async function () {
+    bootCommon();
+    const session = await requireAuth();
+    if (!session) return;
+    await loadUserBadge();
+    initTicketsPage();
+  })();
+</script>
+</body>
+</html>

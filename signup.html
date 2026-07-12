@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Create Account · MaintainIQ</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+<button class="theme-toggle auth-theme-toggle" data-theme-toggle></button>
+
+<div class="auth-wrap">
+  <div class="glass-card auth-card">
+    <div class="auth-brand">
+      <div class="brand-mark"><i data-lucide="scan-line"></i></div>
+      <div class="brand-name">Maintain<span>IQ</span></div>
+    </div>
+    <h1 class="auth-title">Create your account</h1>
+    <p class="auth-subtitle">Start tracking assets and maintenance in minutes</p>
+
+    <div id="auth-error" class="auth-error hidden"></div>
+
+    <form id="signup-form">
+      <div class="field">
+        <label for="signup-name">Full name</label>
+        <div class="input-icon-wrap">
+          <i data-lucide="user"></i>
+          <input class="input" type="text" id="signup-name" placeholder="Jane Doe" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="signup-email">Email</label>
+        <div class="input-icon-wrap">
+          <i data-lucide="mail"></i>
+          <input class="input" type="email" id="signup-email" placeholder="you@company.com" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="signup-password">Password</label>
+        <div class="input-icon-wrap">
+          <i data-lucide="lock"></i>
+          <input class="input" type="password" id="signup-password" placeholder="At least 6 characters" required minlength="6">
+        </div>
+        <div class="pass-strength"><div class="pass-strength-bar" id="pass-bar"></div></div>
+      </div>
+      <button type="submit" id="signup-btn" class="btn btn-primary btn-block">Create Account</button>
+    </form>
+
+    <p class="auth-footer">Already have an account? <a href="login.html">Sign in</a></p>
+  </div>
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  (async function () {
+    bootCommon();
+    await redirectIfAuthed();
+    initPasswordStrength("signup-password", "pass-bar");
+    document.getElementById("signup-form").addEventListener("submit", handleSignup);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaintainIQ</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+  <div class="spinner" style="width:32px;height:32px;border-width:3px;"></div>
+</div>
+<script src="js/supabase.js"></script>
+<script>
+  (async function () {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    window.location.href = session ? "dashboard.html" : "login.html";
+  })();
+</script>
+</body>
+</html>

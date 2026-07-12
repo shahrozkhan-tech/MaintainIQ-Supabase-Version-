@@ -1,0 +1,17 @@
+.auth-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+  background:
+    radial-gradient(900px 500px at 15% 10%, var(--indigo-100), transparent 55%),
+    radial-gradient(700px 500px at 100% 100%, var(--emerald-100), transparent 50%),
+    var(--bg);
+}
+.auth-card { width: 100%; max-width: 400px; padding: 34px 30px; }
+.auth-brand { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 22px; }
+.auth-title { text-align: center; font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+.auth-subtitle { text-align: center; font-size: 13.5px; color: var(--text-secondary); margin-bottom: 26px; }
+.auth-footer { text-align: center; font-size: 13.5px; color: var(--text-secondary); margin-top: 18px; }
+.auth-footer a { color: var(--indigo-500); font-weight: 700; }
+.auth-error { background: var(--red-100); color: var(--red-600); font-size: 13px; font-weight: 600; padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 16px; }
+.auth-theme-toggle { position: fixed; top: 18px; right: 18px; }
+.pass-strength { height: 4px; border-radius: 3px; background: var(--border); margin-top: 6px; overflow: hidden; }
+.pass-strength-bar { height: 100%; width: 0%; background: var(--red-500); transition: all var(--dur) var(--ease); }

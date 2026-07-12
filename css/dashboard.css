@@ -1,0 +1,34 @@
+.chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text-secondary); font-weight: 600; }
+.legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+
+.bar-chart { display: flex; flex-direction: column; gap: 12px; }
+.bar-row { display: flex; align-items: center; gap: 10px; }
+.bar-row .bar-label { width: 92px; font-size: 12.5px; color: var(--text-secondary); font-weight: 600; flex-shrink: 0; }
+.bar-track { flex: 1; height: 12px; border-radius: var(--radius-pill); background: var(--bg-soft); overflow: hidden; }
+.bar-fill { height: 100%; border-radius: var(--radius-pill); background: linear-gradient(90deg, var(--indigo-400), var(--indigo-600)); transition: width .5s var(--ease); }
+.bar-row .bar-value { width: 26px; text-align: right; font-size: 12.5px; font-weight: 700; }
+
+.donut-wrap { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.donut-center-value { font-size: 22px; font-weight: 800; }
+.donut-center-label { font-size: 11px; color: var(--text-muted); text-align:center; }
+
+.activity-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.activity-item:last-child { border-bottom: none; }
+.activity-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.activity-icon svg { width: 16px; height: 16px; }
+.activity-text { font-size: 13.5px; font-weight: 600; }
+.activity-time { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+.quick-actions { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 18px; }
+.quick-action-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px;
+  border-radius: var(--radius-md); background: var(--bg-soft); cursor: pointer; transition: all var(--dur) var(--ease);
+  font-size: 12px; font-weight: 700; color: var(--text-secondary); border: 1px solid transparent;
+}
+.quick-action-btn:hover { background: var(--indigo-100); color: var(--indigo-600); border-color: var(--indigo-400); transform: translateY(-2px); }
+.quick-action-btn svg { width: 22px; height: 22px; }
+
+@media (max-width: 560px) {
+  .quick-actions { grid-template-columns: repeat(2,1fr); }
+}

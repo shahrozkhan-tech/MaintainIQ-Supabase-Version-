@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Asset Info · MaintainIQ</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+<div style="max-width:520px;margin:0 auto;padding:20px 16px 60px;min-height:100vh;">
+  <div class="flex items-center justify-between" style="padding:10px 2px 20px;">
+    <div class="flex items-center gap-12">
+      <div class="brand-mark"><i data-lucide="scan-line"></i></div>
+      <div class="brand-name" style="font-size:16px">Maintain<span>IQ</span></div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle></button>
+  </div>
+
+  <div id="public-content">
+    <div class="loading-row"><span class="spinner"></span> Loading asset...</div>
+  </div>
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/public.js"></script>
+<script>
+  (function () {
+    initTheme();
+    document.querySelectorAll("[data-theme-toggle]").forEach(btn => btn.addEventListener("click", toggleTheme));
+    if (window.lucide) lucide.createIcons();
+    initPublicPage();
+  })();
+</script>
+</body>
+</html>
