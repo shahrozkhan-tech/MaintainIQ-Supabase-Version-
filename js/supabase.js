@@ -4,8 +4,8 @@
 // Loaded via CDN in every HTML page BEFORE this file:
 // <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
-const SUPABASE_URL = "https://oieugdxcamppctmwxpuc.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_ctcRlg1AKbb036UqPAugOQ_YKKFTU47";
+const SUPABASE_URL = "https://osbmkupyrkdsobzokfca.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_LZ-FB3KG423yTxXTkuOfXw_Cua-jlPW";
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
